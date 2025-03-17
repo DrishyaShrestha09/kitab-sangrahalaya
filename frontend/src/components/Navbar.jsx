@@ -1,9 +1,23 @@
+import { Link } from "react-router-dom"
+import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 
 const Navbar = () => {
   return (
-    <div>
-      <h1>this is my nav bar</h1>
-    </div>
+    <header className="max-w-screen-2xl mx-auto px-4 py-6">
+        <nav className="flex justify-between items-center">
+            {/* Left side */}
+            <div>
+                <Link to='/'>
+                <HiMiniBars3CenterLeft />
+                </Link>
+            </div>
+
+            {/* Right side */}
+            <div>
+                nav items
+            </div>
+        </nav>
+    </header>
   )
 }
 
