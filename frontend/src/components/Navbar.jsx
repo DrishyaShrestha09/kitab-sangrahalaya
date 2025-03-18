@@ -8,6 +8,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 
 import avatarImg from "../assets/avatar.png"
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 {/*creating a dropdown menue nad passing obj in an array*/}
 const navigation = [
@@ -20,6 +21,9 @@ const navigation = [
 const Navbar = () => {
     {/*creating a function for dropdown menue*/}
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+    const cartItems = useSelector(state => state.cart.cartItems);
+
     {/*creating a function which checks if user is available or not if available it shows user logo*/}
     const currentUser = false;
 
@@ -82,7 +86,10 @@ const Navbar = () => {
             className="bg-primary p-1 sm:px-6 px-2 flex items-center rounded-sm"
           >
             <HiOutlineShoppingCart className="" />
-            <span className="text-sm font-semibold sm:ml-1">0</span>
+            {
+              cartItems.length > 0 ? <span className="text-sm font-semibold sm:ml-1">{cartItems.length}</span> : <span className="text-sm font-semibold sm:ml-1">0</span>
+            }
+            
           </Link>
         </div>
       </nav>
