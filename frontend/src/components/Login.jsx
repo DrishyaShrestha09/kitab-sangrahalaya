@@ -9,6 +9,10 @@ const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = data => console.log(data);
+
+    const handleGoogleSignIn = () =>{
+      
+    }
   return (
     <div>
       <h1 className='h-[calc(100vh-120px)] flex justify-center items-center'>
@@ -38,7 +42,9 @@ const Login = () => {
             <p className='align-baseline font-md mt-4 text-sm'>Dont have an account? Feel free to <Link to="/register" className='text-blue-500 hover:text-blue-700'> Register</Link></p>
             {/* Google auth */}
             <div className='mt-4'>
-              <button className='w-full flex flex-wrap gap-1 items-center justify-center bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded foucs:outline-none'>
+              <button 
+              onClick={handleGoogleSignIn}
+              className='w-full flex flex-wrap gap-1 items-center justify-center bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded foucs:outline-none'>
               <FaGoogle className='mr-2'/>
               Sign in with Google
               </button>
