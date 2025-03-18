@@ -21,7 +21,7 @@ const Navbar = () => {
     {/*creating a function for dropdown menue*/}
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     {/*creating a function which checks if user is available or not if available it shows user logo*/}
-    const currentUser = true;
+    const currentUser = false;
 
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
