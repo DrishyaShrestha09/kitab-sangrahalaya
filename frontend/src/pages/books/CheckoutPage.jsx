@@ -10,9 +10,8 @@ const CheckoutPage = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
     const [isChecked, setIsChecked] = useState(false)
+    const onSubmit = async (data) => {
 
-    const onSubmit = data => {
-        console.log(data);
         const newOrder = {
             name: data.name,
             email: currentUser?.email,
@@ -26,7 +25,13 @@ const CheckoutPage = () => {
             productIds: cartItems.map(item => item?._id),
             totalPrice: totalPrice,
         }
-        console.log(newOrder)
+        
+        try {
+            // await
+        } catch (error) {
+           console.error("Error while creating an order", error);
+           alert("Failed to create an order. Please try again later.");
+        }
     }
     const {currentUser} = useAuth()
   return (
