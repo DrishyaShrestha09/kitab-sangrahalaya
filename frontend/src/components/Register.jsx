@@ -19,12 +19,13 @@ const Register = () => {
   // register user
 
   const onSubmit = async (data) => {
-    console.log(data)
+    // console.log(data)
     try {
       await registerUser(data.email, data.password);
       alert("Successfully registered user");
     } catch (error) {
       setMessage("Please provide valid email and password");
+      console.error(error);
     }
   };
 
