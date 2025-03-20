@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 import Swal from 'sweetalert2';
@@ -19,6 +19,8 @@ const CheckoutPage = () => {
      } = useForm()
 
     const [createOrder, {isLoading, error}] = useCreateOrderMutation();
+    // when the order is confirmed redirect to order page
+    const navigate = useNavigate()
 
     const [isChecked, setIsChecked] = useState(false)
     const onSubmit = async (data) => {
@@ -48,6 +50,7 @@ const CheckoutPage = () => {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Okay!"
               });
+              navigate("/orders")
         } catch (error) {
            console.error("Error while creating an order", error);
            alert("Failed to create an order. Please try again later.");
@@ -160,7 +163,7 @@ const CheckoutPage = () => {
                                         <input 
                                         onChange={(e) => setIsChecked(e.target.checked)}
                                         type="checkbox" name="billing_same" id="billing_same" className="form-checkbox" />
-                                        <label htmlFor="billing_same" className="ml-2 ">I am aggree to the <Link className='underline underline-offset-2 text-blue-600'>Terms & Conditions</Link> and <Link className='underline underline-offset-2 text-blue-600'>Shoping Policy.</Link></label>
+                                        <label htmlFor="billing_same" className="ml-2 ">I aggree to the <Link className='underline underline-offset-2 text-blue-600'>Terms & Conditions</Link> and <Link className='underline underline-offset-2 text-blue-600'>Shoping Policy.</Link></label>
                                     </div>
                                 </div>
 
