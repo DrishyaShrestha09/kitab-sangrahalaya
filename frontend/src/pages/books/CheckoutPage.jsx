@@ -4,11 +4,22 @@ import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
+import Swal from 'sweetalert2';
+import { useCreateOrderMutation } from '../../redux/features/orders/ordersApi';
+
 const CheckoutPage = () => {
     const cartItems = useSelector((state) => state.cart.cartItems);
     const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
+    const { currentUser} = useAuth()
+    const { 
+        register, 
+        handleSubmit, 
+        watch, 
+        formState: { errors },
+     } = useForm()
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const [createOrder, {isLoading, error}] = useCreateOrderMutation();
+
     const [isChecked, setIsChecked] = useState(false)
     const onSubmit = async (data) => {
 
@@ -27,13 +38,23 @@ const CheckoutPage = () => {
         }
         
         try {
-            // await
+            await createOrder(newOrder).unwrap();
+            Swal.fire({
+                title: "Order conformed",
+                text: "You order placed successfully",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Okay!"
+              });
         } catch (error) {
            console.error("Error while creating an order", error);
            alert("Failed to create an order. Please try again later.");
         }
     }
-    const {currentUser} = useAuth()
+
+  if(isLoading) return <div>Loading....</div>
   return (
     <section>
       <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
