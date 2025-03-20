@@ -9,6 +9,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import avatarImg from "../assets/avatar.png"
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useAuth } from "../context/AuthContext";
 
 {/*creating a dropdown menue nad passing obj in an array*/}
 const navigation = [
@@ -24,8 +25,14 @@ const Navbar = () => {
 
     const cartItems = useSelector(state => state.cart.cartItems);
 
+    const {currentUser, logout} = useAuth()
+
+    const handleLogOut = () => {
+      logout()
+    }
+
     {/*creating a function which checks if user is available or not if available it shows user logo*/}
-    const currentUser = false;
+    // const currentUser = false; we dont use this now as we will be getting data from backend
 
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
@@ -70,6 +77,11 @@ const Navbar = () => {
                                                 </li>
                                             ))
                                         }
+                                        <li>
+                                          <button 
+                                          onClick={handleLogOut}
+                                          className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">Logout</button>
+                                        </li>
                                     </ul>
                                 </div>
                             )
