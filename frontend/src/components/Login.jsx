@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
     const [message, setMessage] = useState("")
-    const { loginUser } = useAuth();
+    const { loginUser, signInWithGoogle } = useAuth();
     const navigate = useNavigate()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -22,8 +22,15 @@ const Login = () => {
       }
     }
 
-    const handleGoogleSignIn = () =>{
-      
+    const handleGoogleSignIn = async () =>{
+      try {
+        await signInWithGoogle()
+        alert("Login Successful!");
+        navigate("/")
+      } catch (error) {
+        alert("Failed to sigin with google");
+        console.error(error);
+      }
     }
   return (
     <div>
