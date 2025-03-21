@@ -16,4 +16,4 @@ const verifyAdminToken = (req, res, next) => {
     })
 }
 
-module.exports = verifyAdminToken
+module.exports = verifyAdminToken;

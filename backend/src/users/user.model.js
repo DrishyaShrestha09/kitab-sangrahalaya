@@ -13,16 +13,17 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['admin', 'user'],
+        enum: ['user', 'admin'],
         required: true
     }
 })
 
-userSchema.pre('save', async function (next){
+userSchema.pre('save', async function (next) {
     if(!this.isModified('password')) return next();
     this.password = await bycript.hash(this.password, 10);
     next();
-})
+}
+)
 
 const User = mongoose.model('User', userSchema);
 
