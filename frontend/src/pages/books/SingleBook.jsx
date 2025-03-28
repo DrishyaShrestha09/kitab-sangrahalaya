@@ -21,7 +21,7 @@ const SingleBook = () => {
     if(isLoading) return <div>Loading...</div>
     if(isError) return <div>Error happened while loading book info</div>
   return (
-    <div className="max-w-lg shadow-md p-5">
+    <div className="max-w-lg shadow-md p-5  ">
             <h1 className="text-2xl font-bold mb-6">{book.title}</h1>
 
             <div className=''>

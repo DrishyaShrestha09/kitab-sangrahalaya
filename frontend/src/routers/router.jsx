@@ -28,7 +28,8 @@ const router = createBrowserRouter([
       {
         path: "/orders",
         element: (
-          <PrivateRoute>
+          //yo private route le if user logged in xaina vane vitra xirna didaina
+          <PrivateRoute> 
             <OrderPage />
           </PrivateRoute>
         ),
@@ -63,10 +64,12 @@ const router = createBrowserRouter([
       },
     ],
   },
+  //Admin Route
   {
     path: "/admin",
     element: <AdminLogin />,
   },
+  // Dashboard route
   {
     path: "/dashboard",
     element: (
