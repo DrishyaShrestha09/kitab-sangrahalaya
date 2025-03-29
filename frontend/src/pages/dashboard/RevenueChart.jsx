@@ -7,17 +7,14 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const RevenueChart = () => {
-
-
-
-
+  
   const revenueData = [500, 700, 800, 600, 750, 900, 650, 870, 960, 1020, 1100, 1150];;
 
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: 'Revenue (USD)',
+        label: 'Revenue (RS)',
         data: revenueData,
         backgroundColor: 'rgba(34, 197, 94, 0.7)', 
         borderColor: 'rgba(34, 197, 94, 1)',
