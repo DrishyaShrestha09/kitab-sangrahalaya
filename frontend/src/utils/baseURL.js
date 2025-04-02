@@ -1,5 +1,5 @@
 const getBaseUrl = () => {
-    return "https://kitab-sangrahalaya-backend.vercel.app/"
+    return "http://localhost:5000"
 }
 
 export default getBaseUrl;
