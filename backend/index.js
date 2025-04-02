@@ -10,6 +10,7 @@ require('dotenv').config()
 app.use(express.json());
 app.use(cors({
     origin: ['http://localhost:5173', 'https://kitab-sangrahalaya.vercel.app'],
+    methods : ["POST", "GET"],
     credentials: true
 }))
 
@@ -26,12 +27,13 @@ app.use("/api/admin", adminRoutes);
 
 async function main() {
     await mongoose.connect(process.env.DB_URL)
-    app.get('/', (req, res) => {
-        res.send("Hola Amigo! Welcome to the book server!");
-    })
 }
 
 main() .then(()=> console.log("Successfully connected to MongoDB!")).catch(err => console.log(err));
+
+app.get('/', (req, res) => {
+    res.send("Hola Amigo! Welcome to the book server!");
+})
 
 app.listen(port, () =>{
     console.log(`Server is listening on ${port}`)
