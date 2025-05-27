@@ -9,7 +9,7 @@ require('dotenv').config()
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: [ 'https://kitab-sangrahalaya.vercel.app'],
+    origin: ["https://kitab-sangrahalaya-backend.vercel.app/"],
     methods : ["POST", "GET"],
     credentials: true
 }))
